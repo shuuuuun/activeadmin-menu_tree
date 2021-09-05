@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-RSpec.describe Activeadmin::MenuTree do
+RSpec.describe ActiveAdmin::MenuTree do
   it "has a version number" do
-    expect(Activeadmin::MenuTree::VERSION).not_to be nil
+    expect(ActiveAdmin::MenuTree::VERSION).not_to be nil
   end
 
   it "does something useful" do

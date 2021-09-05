@@ -2,7 +2,7 @@
 
 require_relative "menu_tree/version"
 
-module Activeadmin
+module ActiveAdmin
   module MenuTree
     class Error < StandardError; end
     # Your code goes here...

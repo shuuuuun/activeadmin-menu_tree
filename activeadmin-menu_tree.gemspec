@@ -4,7 +4,7 @@ require_relative "lib/activeadmin/menu_tree/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "activeadmin-menu_tree"
-  spec.version       = Activeadmin::MenuTree::VERSION
+  spec.version       = ActiveAdmin::MenuTree::VERSION
   spec.authors       = ["shuuuuuny"]
   spec.email         = []
 
