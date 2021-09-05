@@ -2,7 +2,7 @@
 
 source "https://rubygems.org"
 
-# Specify your gem's dependencies in activeadmin-menu-tree.gemspec
+# Specify your gem's dependencies in activeadmin-menu_tree.gemspec
 gemspec
 
 gem "rake", "~> 13.0"

@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-require_relative "lib/activeadmin/menu/tree/version"
+require_relative "lib/activeadmin/menu_tree/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "activeadmin-menu-tree"
-  spec.version       = Activeadmin::Menu::Tree::VERSION
+  spec.name          = "activeadmin-menu_tree"
+  spec.version       = Activeadmin::MenuTree::VERSION
   spec.authors       = ["shuuuuuny"]
-  spec.email         = ["shuuuuuny@gmail.com"]
+  spec.email         = []
 
   spec.summary       = "TODO: Write a short summary, because RubyGems requires one."
   spec.description   = "TODO: Write a longer description or delete this line."
