@@ -18,14 +18,6 @@ module ActiveAdmin
       def config
         @config ||= Config.new
       end
-
-      # def setup(&block)
-      #   @config ||= Config.new(&block)
-      # end
     end
-
-    # def self.setup(&block)
-    #   @config ||= Config.new(&block)
-    # end
   end
 end
