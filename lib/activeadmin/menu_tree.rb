@@ -9,8 +9,6 @@ module ActiveAdmin
     class Error < StandardError; end
 
     class << self
-      attr_writer :config
-
       def setup
         yield(config)
       end
