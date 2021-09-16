@@ -7,7 +7,7 @@ module ActiveAdmin::MenuTree
       # pp options
       # binding.pry if options.blank?
       # pp config.resource_name if options.blank?
-      menu **options
+      menu(**options)
     end
 
     private
