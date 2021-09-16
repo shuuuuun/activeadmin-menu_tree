@@ -45,9 +45,13 @@ ActiveAdmin.before_load do |config|
 
         menu.add priority: index * 10, **options do |submenu|
           next if item[:children].blank?
+
           item[:children].each.with_index(1) do |child, child_index|
-            child_options = child.except(:children)
+            child_options = child.except(:children, :name)
             child_options[:label] ||= child[:name]
+            next if child[:name]
+
+            # pp child_options
             submenu.add priority: child_index, **child_options
           end
         end

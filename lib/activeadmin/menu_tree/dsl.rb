@@ -23,11 +23,13 @@ module ActiveAdmin::MenuTree
             item[:children].map.with_index(1) do |child, child_index|
               child[:priority] = child_index
               child[:parent] = item[:label]
-              child.delete(:children)
-              child
+              # child.delete(:children)
+              # child
+              child.except(:children)
             end
           end
-        item.delete(:children)
+        # item.delete(:children)
+        item = item.except(:children)
 
         [item] + children
       end.flatten.compact
