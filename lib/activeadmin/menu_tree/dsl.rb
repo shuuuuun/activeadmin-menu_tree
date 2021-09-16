@@ -3,14 +3,15 @@
 module ActiveAdmin::MenuTree
   module DSL
     def menu_tree
-      options = menu_tree_options.find { |item| item[:name] == config.resource_name.name } || {}
-      # pp options
-      # binding.pry if options.blank?
-      # pp config.resource_name if options.blank?
+      options = menu_options(name: config.resource_name.name)
       menu(**options)
     end
 
     private
+
+    def menu_options(name:)
+      menu_tree_options.find { |item| item[:name] == name } || {}
+    end
 
     def menu_tree_options
       menu_tree_config.map.with_index(1) do |item, index|
@@ -23,12 +24,9 @@ module ActiveAdmin::MenuTree
             item[:children].map.with_index(1) do |child, child_index|
               child[:priority] = child_index
               child[:parent] = item[:label]
-              # child.delete(:children)
-              # child
               child.except(:children)
             end
           end
-        # item.delete(:children)
         item = item.except(:children)
 
         [item] + children
