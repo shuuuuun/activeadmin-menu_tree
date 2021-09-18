@@ -1,0 +1,32 @@
+activeadmin:
+  menu_tree:
+    - name: Dashboard
+    - name: Product
+    # - name: Notification
+    - label: Users
+      children:
+        - name: User
+        - name: Profile
+    # - label: Organizations
+    #   children:
+    #     - name: Organization
+    #     - name: License
+    - label: Admin
+      children:
+        - name: AdminUser
+          label: Admin Users
+        - name: Comment
+          label: Admin Comments
+          url: /admin/comments
+    - label: Others
+      children:
+        - name: Foo
+        - name: Bar
+        - label: Baz
+          url: 'https://example.com/baz'
+          html_options:
+            target: blank
+    - label: Site
+      url: 'https://example.com'
+      html_options:
+        target: blank
