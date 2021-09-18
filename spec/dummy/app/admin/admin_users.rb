@@ -1,4 +1,6 @@
 ActiveAdmin.register AdminUser do
+  menu_tree
+
   permit_params :email, :password, :password_confirmation
 
   index do
