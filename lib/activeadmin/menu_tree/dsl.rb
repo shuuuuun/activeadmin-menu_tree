@@ -2,8 +2,13 @@
 
 module ActiveAdmin::MenuTree
   module DSL
-    def menu_tree
-      options = menu_options(name: config.resource_name.name)
+    def menu_tree(**args)
+      options = menu_options(name: config.resource_name.name)&.merge(args)
+      pp options
+      options = options.except(:children, :name)
+      # binding.pry if options.blank?
+      # pp config.resource_name
+      # pp config.resource_name if options.blank?
       menu(**options)
     end
 
