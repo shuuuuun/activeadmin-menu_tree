@@ -21,6 +21,7 @@ module ActiveAdmin
               menu_tree_config.each.with_index(1) do |item, index|
                 options = item.except(:children, :name)
                 options[:label] ||= item[:name]
+                options.compact!
 
                 menu.add priority: index * 10, **options do |submenu|
                   next if item[:children].blank?
