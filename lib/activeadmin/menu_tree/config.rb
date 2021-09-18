@@ -13,5 +13,20 @@ module ActiveAdmin::MenuTree
 
       @menu_tree = new_value.map(&:deep_symbolize_keys)
     end
+
+    def find_menu_option(name:)
+      menu_tree.each.with_index(1) do |item, index|
+        item[:priority] = index * 10
+        return item if item[:name] == name
+        next if item[:children].blank?
+
+        item[:children].each.with_index(1) do |child, child_index|
+          child[:priority] = child_index
+          child[:parent] = item[:label]
+          return child if child[:name] == name
+        end
+      end
+      nil
+    end
   end
 end
