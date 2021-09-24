@@ -2,15 +2,10 @@ activeadmin:
   menu_tree:
     - name: Dashboard
     - name: Product
-    # - name: Notification
-    - label: Users
+    - label: User Info
       children:
         - name: User
         - name: Profile
-    # - label: Organizations
-    #   children:
-    #     - name: Organization
-    #     - name: License
     - label: Admin
       children:
         - name: AdminUser
@@ -26,7 +21,7 @@ activeadmin:
           url: 'https://example.com/baz'
           html_options:
             target: blank
-    - label: Site
+    - label: Example Site
       url: 'https://example.com'
       html_options:
         target: blank
