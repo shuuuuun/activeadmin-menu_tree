@@ -21,6 +21,7 @@ module ActiveAdmin::MenuTree
     def flatten_menu_options
       menu_tree.map.with_index(1) do |item, index|
         item[:priority] = index * 10
+        item[:label] ||= item[:name]&.pluralize&.titleize || ""
 
         children =
           if item[:children].blank?
@@ -28,6 +29,7 @@ module ActiveAdmin::MenuTree
           else
             item[:children].map.with_index(1) do |child, child_index|
               child[:priority] = child_index
+              child[:label] ||= child[:name]&.pluralize&.titleize || ""
               child[:parent] = item[:label]
               child.except(:children)
             end

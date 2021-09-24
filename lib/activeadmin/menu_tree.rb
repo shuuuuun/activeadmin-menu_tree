@@ -24,9 +24,6 @@ module ActiveAdmin
             admin.build_menu do |menu|
               menu_tree_config.flatten_menu_options.each do |item|
                 options = item.except(:name)
-                options[:label] ||= item[:name]&.pluralize&.titleize
-                options.compact!
-
                 menu.add(**options)
               end
             end
