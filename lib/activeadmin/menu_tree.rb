@@ -15,10 +15,14 @@ module ActiveAdmin
         ActiveAdmin.before_load do |config|
           ActiveAdmin::DSL.prepend ActiveAdmin::MenuTree::DSL
 
+          menu_tree_config = ActiveAdmin::MenuTree.config
+
+          comments_menu = menu_tree_config.find_menu_option(name: "Comment")
+          config.comments_menu = comments_menu if comments_menu.present?
+
           config.namespace :admin do |admin|
             admin.build_menu do |menu|
-              menu_tree_config = ActiveAdmin::MenuTree.config.menu_tree
-              menu_tree_config.each.with_index(1) do |item, index|
+              menu_tree_config.menu_tree.each.with_index(1) do |item, index|
                 options = item.except(:children, :name)
                 options[:label] ||= item[:name]
                 options.compact!
