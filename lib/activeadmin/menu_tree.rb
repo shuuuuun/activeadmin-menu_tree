@@ -24,7 +24,7 @@ module ActiveAdmin
             admin.build_menu do |menu|
               menu_tree_config.menu_tree.each.with_index(1) do |item, index|
                 options = item.except(:children, :name)
-                options[:label] ||= item[:name]
+                options[:label] ||= item[:name]&.pluralize&.titleize
                 options.compact!
 
                 menu.add priority: index * 10, **options do |submenu|
