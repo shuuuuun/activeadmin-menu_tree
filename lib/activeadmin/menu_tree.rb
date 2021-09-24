@@ -22,7 +22,7 @@ module ActiveAdmin
 
           config.namespace :admin do |admin|
             admin.build_menu do |menu|
-              menu_tree_config.flatten_menu_options.each do |item|
+              menu_tree_config.flattened_menu_options.each do |item|
                 options = item.except(:name)
                 menu.add(**options)
               end
