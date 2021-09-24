@@ -22,21 +22,12 @@ module ActiveAdmin
 
           config.namespace :admin do |admin|
             admin.build_menu do |menu|
-              menu_tree_config.menu_tree.each.with_index(1) do |item, index|
-                options = item.except(:children, :name)
+              menu_tree_config.flatten_menu_options.each do |item|
+                options = item.except(:name)
                 options[:label] ||= item[:name]&.pluralize&.titleize
                 options.compact!
 
-                menu.add priority: index * 10, **options do |submenu|
-                  next if item[:children].blank?
-
-                  item[:children].each.with_index(1) do |child, child_index|
-                    child_options = child.except(:children, :name)
-                    next if child[:name]
-
-                    submenu.add priority: child_index, **child_options
-                  end
-                end
+                menu.add(**options)
               end
             end
           end

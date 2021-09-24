@@ -15,18 +15,27 @@ module ActiveAdmin::MenuTree
     end
 
     def find_menu_option(name:)
-      menu_tree.each.with_index(1) do |item, index|
-        item[:priority] = index * 10
-        return item if item[:name] == name
-        next if item[:children].blank?
+      flatten_menu_options.find { |item| item[:name] == name }
+    end
 
-        item[:children].each.with_index(1) do |child, child_index|
-          child[:priority] = child_index
-          child[:parent] = item[:label]
-          return child if child[:name] == name
-        end
-      end
-      nil
+    def flatten_menu_options
+      menu_tree.map.with_index(1) do |item, index|
+        item[:priority] = index * 10
+
+        children =
+          if item[:children].blank?
+            []
+          else
+            item[:children].map.with_index(1) do |child, child_index|
+              child[:priority] = child_index
+              child[:parent] = item[:label]
+              child.except(:children)
+            end
+          end
+        item = item.except(:children)
+
+        [item] + children
+      end.flatten.compact
     end
   end
 end
