@@ -12,17 +12,15 @@ module ActiveAdmin
       def setup
         yield(config)
 
-        ActiveAdmin.before_load do |config|
+        ActiveAdmin.before_load do |aa_config|
           ActiveAdmin::DSL.prepend ActiveAdmin::MenuTree::DSL
 
-          menu_tree_config = ActiveAdmin::MenuTree.config
+          comments_menu = config.find_menu_option(name: "Comment")
+          aa_config.comments_menu = comments_menu if comments_menu.present?
 
-          comments_menu = menu_tree_config.find_menu_option(name: "Comment")
-          config.comments_menu = comments_menu if comments_menu.present?
-
-          config.namespace :admin do |admin|
+          aa_config.namespace :admin do |admin|
             admin.build_menu do |menu|
-              menu_tree_config.flattened_menu_options.each do |item|
+              config.flattened_menu_options.each do |item|
                 options = item.except(:name)
                 menu.add(**options)
               end
