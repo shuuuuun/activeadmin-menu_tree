@@ -2,7 +2,7 @@
 
 require "activeadmin/menu_tree"
 
-support_files = Dir[File.expand_path("../support/**/*.rb", __FILE__)]
+support_files = Dir[File.expand_path("support/**/*.rb", __dir__)]
 support_files.each { |f| require f }
 
 RSpec.configure do |config|
