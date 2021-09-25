@@ -22,7 +22,15 @@ RSpec.describe ActiveAdmin::MenuTree::DSL do
       subject
     end
 
-    it { expect(dsl).to have_received(:menu) }
-    it { expect(ActiveAdmin::MenuTree).to have_received(:config) }
+    it { expect(dsl).to have_received(:menu).once }
+    it { expect(ActiveAdmin::MenuTree).to have_received(:config).once }
+
+    context "with args" do
+      subject { dsl.menu_tree(**kwargs) }
+      let(:kwargs) { { label: "label", priority: 999 } }
+
+      it { expect(dsl).to have_received(:menu).with(kwargs).once }
+      it { expect(ActiveAdmin::MenuTree).to have_received(:config).once }
+    end
   end
 end
