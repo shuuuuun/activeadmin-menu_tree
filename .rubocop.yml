@@ -23,3 +23,6 @@ Layout/LineLength:
 
 Layout/SpaceBeforeBlockBraces:
   Enabled: false
+
+Metrics/MethodLength:
+  Max: 15
