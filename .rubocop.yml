@@ -1,6 +1,9 @@
 AllCops:
   TargetRubyVersion: 2.7
   NewCops: enable
+  DisplayCopNames: true
+  DisplayStyleGuide: true
+  ExtraDetails: true
   Exclude:
     - 'spec/dummy/**/*'
 
