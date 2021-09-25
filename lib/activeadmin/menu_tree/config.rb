@@ -2,7 +2,7 @@
 
 module ActiveAdmin::MenuTree
   class Config
-    attr_reader :menu_tree, :flattened_menu_options
+    attr_reader :menu_tree, :menu_options
 
     def initialize
       @menu_tree = []
@@ -12,11 +12,11 @@ module ActiveAdmin::MenuTree
       raise ActiveAdmin::MenuTree::Error, "Invalid config" unless new_value.is_a? Array
 
       @menu_tree = new_value.map(&:deep_symbolize_keys)
-      @flattened_menu_options = flatten_menu_tree
+      @menu_options = flatten_menu_tree
     end
 
     def find_menu_option(name:)
-      flattened_menu_options.find { |item| item[:name] == name }
+      menu_options.find { |item| item[:name] == name }
     end
 
     private
