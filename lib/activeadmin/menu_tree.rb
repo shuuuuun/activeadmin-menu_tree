@@ -29,12 +29,13 @@ module ActiveAdmin
         comments_menu = config.find_menu_option(name: "Comment")
         aa_config.comments_menu = comments_menu if comments_menu.present?
 
+        menu_options = config.flattened_menu_options
+                             .reject{ |item| item[:name] == "Comment" }
+                             .map{ |item| item.except(:name) }
+
         aa_config.namespace :admin do |admin|
           admin.build_menu do |menu|
-            config.flattened_menu_options.each do |item|
-              next if item[:name] == "Comment"
-
-              options = item.except(:name)
+            menu_options.each do |options|
               menu.add(**options)
             end
           end
