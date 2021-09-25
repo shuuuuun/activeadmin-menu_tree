@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+require "active_support"
+require "active_support/core_ext"
+
 require_relative "menu_tree/version"
 require_relative "menu_tree/config"
 require_relative "menu_tree/dsl"
