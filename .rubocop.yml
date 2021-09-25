@@ -18,6 +18,9 @@ Style/StringLiteralsInInterpolation:
   Enabled: true
   EnforcedStyle: double_quotes
 
+Style/TrailingCommaInHashLiteral:
+  Enabled: false
+
 Layout/LineLength:
   Max: 120
 
