@@ -1,6 +1,27 @@
 # frozen_string_literal: true
 
 RSpec.describe ActiveAdmin::MenuTree::Config do
+  let(:sample_menu_tree) do
+    [{
+      name: "Dashboard"
+    }, {
+      label: "User",
+      children: [{
+        name: "User",
+        label: "It's User",
+      }]
+    }, {
+      label: "Other",
+      children: [{
+        name: "Foo",
+        label: "It's Foo"
+      }, {
+        name: "Bar",
+        label: "It's Bar"
+      }]
+    }]
+  end
+
   it { should respond_to :menu_tree }
   it { should respond_to :menu_tree= }
   it { should respond_to :menu_options }
@@ -15,19 +36,52 @@ RSpec.describe ActiveAdmin::MenuTree::Config do
     it { expect(config.menu_options).to be_nil }
 
     context do
+      let(:new_value) { sample_menu_tree }
+      let(:flattened_size) { sample_menu_tree.map{ |item| [item] + (item[:children] || []) }.flatten.compact.size }
+
       before do
         subject
       end
 
       it { expect(config.menu_tree).to eq new_value }
       it { expect(config.menu_options).not_to be_nil }
-      it { expect(config.menu_options.size).to eq new_value.size }
+      it { expect(config.menu_options.size).to eq flattened_size }
     end
 
     context "with invalid value" do
       let(:new_value) { "invalid value" }
 
       it { expect{ subject }.to raise_error ActiveAdmin::MenuTree::Error }
+    end
+  end
+
+  describe "menu_options" do
+    RSpec::Matchers.define_negated_matcher :not_include, :include
+
+    subject { config.menu_options }
+
+    let(:config) { described_class.new }
+
+    before do
+      config.menu_tree = sample_menu_tree
+    end
+
+    it { is_expected.not_to be_nil }
+    it { expect(subject).to all(include(:label, :priority)) }
+    # it { expect(subject).not_to all(include(:children)) }
+    it { expect(subject).to all(not_include(:children)) }
+
+    describe "include parent in child items" do
+      it { expect(subject.find{ |item| item[:name] == "Dashboard" }).not_to include(:parent) }
+      it { expect(subject.find{ |item| item[:name] == "User" }[:parent]).to eq("User") }
+      it { expect(subject.find{ |item| item[:name] == "Foo" }[:parent]).to eq("Other") }
+      it { expect(subject.find{ |item| item[:name] == "Bar" }[:parent]).to eq("Other") }
+    end
+
+    describe "set name to label when no label" do
+      let(:labelless_items) { subject.select{ |item| item[:label].blank? && item[:name].present? } }
+
+      it { expect(labelless_items).to all(satisfy{ |item| item[:label] == item[:name].pluralize.titleize }) }
     end
   end
 
@@ -38,24 +92,7 @@ RSpec.describe ActiveAdmin::MenuTree::Config do
     let(:name) { "" }
 
     before do
-      config.menu_tree = [{
-        name: "Dashboard"
-      }, {
-        label: "User",
-        children: [{
-          name: "User",
-          label: "It's Users",
-        }]
-      }, {
-        label: "Other",
-        children: [{
-          name: "Foo",
-          label: "It's Foo"
-        }, {
-          name: "Bar",
-          label: "It's Bar"
-        }]
-      }]
+      config.menu_tree = sample_menu_tree
     end
 
     it { is_expected.to eq nil }
@@ -63,7 +100,7 @@ RSpec.describe ActiveAdmin::MenuTree::Config do
     context do
       let(:name) { "User" }
 
-      it { is_expected.to include(name: "User", label: "It's Users") }
+      it { is_expected.to include(name: "User", label: "It's User") }
     end
 
     context do
