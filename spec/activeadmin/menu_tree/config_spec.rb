@@ -56,8 +56,6 @@ RSpec.describe ActiveAdmin::MenuTree::Config do
   end
 
   describe "menu_options" do
-    RSpec::Matchers.define_negated_matcher :not_include, :include
-
     subject { config.menu_options }
 
     let(:config) { described_class.new }
