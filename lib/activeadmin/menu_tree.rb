@@ -15,24 +15,30 @@ module ActiveAdmin
         ActiveAdmin.before_load do |aa_config|
           ActiveAdmin::DSL.prepend ActiveAdmin::MenuTree::DSL
 
-          comments_menu = config.find_menu_option(name: "Comment")
-          aa_config.comments_menu = comments_menu if comments_menu.present?
-
-          aa_config.namespace :admin do |admin|
-            admin.build_menu do |menu|
-              config.flattened_menu_options.each do |item|
-                next if item[:name] == "Comment"
-
-                options = item.except(:name)
-                menu.add(**options)
-              end
-            end
-          end
+          setup_menu_options(aa_config)
         end
       end
 
       def config
         @config ||= Config.new
+      end
+
+      private
+
+      def setup_menu_options(aa_config)
+        comments_menu = config.find_menu_option(name: "Comment")
+        aa_config.comments_menu = comments_menu if comments_menu.present?
+
+        aa_config.namespace :admin do |admin|
+          admin.build_menu do |menu|
+            config.flattened_menu_options.each do |item|
+              next if item[:name] == "Comment"
+
+              options = item.except(:name)
+              menu.add(**options)
+            end
+          end
+        end
       end
     end
   end
