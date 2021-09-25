@@ -33,7 +33,7 @@ RSpec.describe ActiveAdmin::MenuTree::Config do
     let(:new_value) { [] }
 
     it { expect(config.menu_tree).to eq [] }
-    it { expect(config.menu_options).to be_nil }
+    it { expect(config.menu_options).to eq [] }
 
     context do
       let(:new_value) { sample_menu_tree }
@@ -44,7 +44,7 @@ RSpec.describe ActiveAdmin::MenuTree::Config do
       end
 
       it { expect(config.menu_tree).to eq new_value }
-      it { expect(config.menu_options).not_to be_nil }
+      it { expect(config.menu_options).not_to be_empty }
       it { expect(config.menu_options.size).to eq flattened_size }
     end
 

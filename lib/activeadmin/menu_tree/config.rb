@@ -6,6 +6,7 @@ module ActiveAdmin::MenuTree
 
     def initialize
       @menu_tree = []
+      @menu_options = []
     end
 
     def menu_tree=(new_value)
