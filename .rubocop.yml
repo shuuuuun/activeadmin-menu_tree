@@ -20,3 +20,6 @@ Style/StringLiteralsInInterpolation:
 
 Layout/LineLength:
   Max: 120
+
+Layout/SpaceBeforeBlockBraces:
+  Enabled: false
