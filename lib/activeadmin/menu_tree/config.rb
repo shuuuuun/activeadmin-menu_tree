@@ -23,23 +23,22 @@ module ActiveAdmin::MenuTree
 
     def flatten_menu_tree
       menu_tree.map.with_index(1) do |item, index|
-        options = format_options(item, index: index, name: item[:name])
-
+        options = format_options(item, index: index)
         next options unless item[:children].is_a? Array
 
         children =
           item[:children].map.with_index(1) do |child, child_index|
-            format_options(child, index: child_index, name: child[:name], parent: item[:label])
+            format_options(child, index: child_index, parent: item[:label])
           end
 
         [options] + children
       end.flatten.compact
     end
 
-    def format_options(item, index:, name:, parent: nil)
+    def format_options(item, index:, parent: nil)
       options = item.except(:children)
       options[:priority] = index * 10
-      options[:label] ||= name&.pluralize&.titleize || ""
+      options[:label] ||= item[:name]&.pluralize&.titleize || ""
       options[:parent] = parent if parent.present?
       options
     end
