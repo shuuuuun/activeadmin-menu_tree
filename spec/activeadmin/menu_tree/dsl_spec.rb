@@ -19,18 +19,21 @@ RSpec.describe ActiveAdmin::MenuTree::DSL do
       allow(dsl).to receive(:config).and_return(config)
       allow(dsl).to receive(:menu)
       allow(ActiveAdmin::MenuTree).to receive(:config).and_call_original
+      allow(ActiveAdmin::MenuTree.config).to receive(:find_menu_option)
       subject
     end
 
     it { expect(dsl).to have_received(:menu).with(no_args).once }
-    it { expect(ActiveAdmin::MenuTree).to have_received(:config).once }
+    it { expect(ActiveAdmin::MenuTree).to have_received(:config).at_least(:once) }
+    it { expect(ActiveAdmin::MenuTree.config).to have_received(:find_menu_option).with(name: "name").once }
 
     context "with args" do
       subject { dsl.menu_tree(**kwargs) }
       let(:kwargs) { { label: "label", priority: 999, foo: "foo" } }
 
       it { expect(dsl).to have_received(:menu).with(kwargs).once }
-      it { expect(ActiveAdmin::MenuTree).to have_received(:config).once }
+      it { expect(ActiveAdmin::MenuTree).to have_received(:config).at_least(:once) }
+      it { expect(ActiveAdmin::MenuTree.config).to have_received(:find_menu_option).with(name: "name").once }
     end
   end
 end
