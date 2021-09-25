@@ -22,6 +22,7 @@ module ActiveAdmin
             admin.build_menu do |menu|
               config.flattened_menu_options.each do |item|
                 next if item[:name] == "Comment"
+
                 options = item.except(:name)
                 menu.add(**options)
               end
