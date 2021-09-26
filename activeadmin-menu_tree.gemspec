@@ -8,13 +8,11 @@ Gem::Specification.new do |spec|
   spec.authors       = ["shuuuuuny"]
   spec.email         = []
 
-  spec.summary       = "activeadmin-menu_tree"
-  spec.description   = "activeadmin-menu_tree"
+  spec.summary       = "Allows ActiveAdmin menus to be managed in tree format."
+  spec.description   = "This is a wrapper library for managing ActiveAdmin's menu structure in a simple yaml format, and automatically setting the priority and parent."
   spec.homepage      = "https://github.com/shuuuuun/activeadmin-menu_tree"
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.7.0")
-
-  # spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = "https://github.com/shuuuuun/activeadmin-menu_tree"
