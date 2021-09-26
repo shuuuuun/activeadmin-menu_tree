@@ -3,6 +3,7 @@ PATH
   specs:
     activeadmin-menu_tree (0.0.1)
       activeadmin (~> 2.8)
+      activesupport
 
 GEM
   remote: https://rubygems.org/
