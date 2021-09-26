@@ -13,6 +13,8 @@ module ActiveAdmin
 
     class << self
       def setup
+        raise ActiveAdmin::MenuTree::Error, "No block given, require a block" unless block_given?
+
         yield(config)
 
         ActiveAdmin.before_load do |aa_config|
