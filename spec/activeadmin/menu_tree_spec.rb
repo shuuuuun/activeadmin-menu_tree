@@ -8,11 +8,11 @@ RSpec.describe ActiveAdmin::MenuTree do
   describe "setup" do
     subject { ActiveAdmin::MenuTree.setup(&block) }
 
-    let(:block) { lambda { |config| config } }
+    let(:block) { lambda { |config| config.menu_tree = [] } }
     let(:activeadmin_config) { double("ActiveAdmin::Application") }
 
     before do
-      allow(activeadmin_config).to receive(:comments_menu)
+      allow(activeadmin_config).to receive(:comments_menu=)
       allow(activeadmin_config).to receive(:namespace)
       allow(ActiveAdmin).to receive(:before_load).and_yield(activeadmin_config)
       allow(ActiveAdmin::DSL).to receive(:prepend)
@@ -29,11 +29,12 @@ RSpec.describe ActiveAdmin::MenuTree do
       it { expect(activeadmin_config).to have_received(:namespace).once }
     end
 
-    # context "with Comment" do
-    #   before { subject }
+    context "with Comment" do
+      before { subject }
+      let(:block) { lambda { |config| config.menu_tree = [{ name: "Comment" }] } }
 
-    #   it { expect(activeadmin_config).to have_received(:comments_menu).once }
-    # end
+      it { expect(activeadmin_config).to have_received(:comments_menu=).once }
+    end
 
     context "no block given" do
       let(:block) { nil }
