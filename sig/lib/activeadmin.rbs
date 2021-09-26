@@ -1,0 +1,3 @@
+module ActiveAdmin
+  def self.before_load: () { (untyped) -> void } -> void
+end
