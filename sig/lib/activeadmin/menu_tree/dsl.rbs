@@ -1,0 +1,9 @@
+module ActiveAdmin::MenuTree
+  module DSL
+    def menu_tree: (**untyped args) -> untyped
+
+    private
+
+    def menu_tree_config: () -> untyped
+  end
+end

@@ -1,0 +1,14 @@
+module ActiveAdmin
+  module MenuTree
+    class Error < StandardError
+    end
+
+    def self.setup: () { (untyped) -> untyped } -> untyped
+
+    def self.config: () -> untyped
+
+    private
+
+    def self.setup_menu_options: (untyped aa_config) -> untyped
+  end
+end
