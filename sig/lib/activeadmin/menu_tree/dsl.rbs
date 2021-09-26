@@ -4,6 +4,6 @@ module ActiveAdmin::MenuTree
 
     private
 
-    def menu_tree_config: () -> untyped
+    def menu_tree_config: () -> Config
   end
 end

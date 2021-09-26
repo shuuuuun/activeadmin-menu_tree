@@ -1,14 +1,13 @@
 module ActiveAdmin::MenuTree
   class Config
-    attr_reader menu_tree: untyped
+    attr_reader menu_tree: Array[untyped]
+    attr_reader menu_options: Array[untyped]
 
-    attr_reader menu_options: untyped
-
-    def initialize: () -> untyped
+    def initialize: () -> void
 
     def menu_tree=: (untyped new_value) -> untyped
 
-    def find_menu_option: (name: untyped name) -> untyped
+    def find_menu_option: (name: String) -> untyped
 
     private
 
