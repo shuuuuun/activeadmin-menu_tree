@@ -2,59 +2,14 @@
 
 <!-- TODO: badge -->
 
-<!-- 
-ActiveAdminのmenuをtree形式で指定できるようにします
-Allow ActiveAdmin's menu to be specified in tree format.
-
-ActiveAdminのmenuがtree形式で指定できるようになります
-ActiveAdmin's menu can now be specified as a tree.
-ActiveAdmin's menu can be specified as a tree.
-
-ActiveAdminのmenuをtree形式で指定できるように拡張します。
-ActiveAdmin's menu can be extended to be specified in a tree format.
-ActiveAdmin's menu will be extended to be specified in a tree format.
-
-ActiveAdminのmenuをtree形式で管理できるようにします.
-Makes it possible to manage ActiveAdmin's menu in a tree format.
-Allows ActiveAdmin menus to be managed as a tree format.
- -->
 Allows [ActiveAdmin](https://github.com/activeadmin/activeadmin) menus to be managed in tree format.
 
-<!-- ActiveAdminのmenu構造をyamlでシンプルに管理し、priorityとparentを自動で設定するラッパーライブラリです -->
 This is a wrapper library for managing ActiveAdmin's menu structure in a simple yaml format, and automatically setting the priority and parent.
 
 ### Motivation
 
-<!-- 
-ActiveAdminの通常のmenu指定方法は、アプリケーションを運用する上で使いづらいと感じました.
-ActiveAdminの通常のmenu指定方法は、アプリケーションを運用していると使いづらいと感じました.
-ActiveAdminの通常のmenu指定方法は、運用するアプリケーションでは使いづらいと感じました.
-The normal way of specifying the menu in ActiveAdmin is considered to be difficult to use when running an application.
-The normal way of specifying the menu in ActiveAdmin is not easy to use for running applications.
-
-ActiveAdmin's normal way of specifying the menu was difficult to use for the application in operation.
-
-The normal way of specifying the menu in ActiveAdmin is difficult to use in the application operation.
-I found ActiveAdmin's normal method of specifying the menu to be difficult to use with the application in operation.
-I found it difficult to use the normal menu specification method of ActiveAdmin in operating the application.
-I found it difficult to use the normal menu specification method of ActiveAdmin when operating an application.
-I found it difficult to use the normal menu specification method of ActiveAdmin in the application to be operated.
-
-ActiveAdminの通常のmenu指定方法は、運用中のアプリケーションで変更する際に不便だと感じました.
-I found it inconvenient to change the normal menu specification method of ActiveAdmin in the application in operation.
- -->
 I felt that the normal way of specifying menus in ActiveAdmin is inconvenient when changing it in an application.
 
-<!-- 
-具体的には以下の2点です
-・`priority`による順序の制御
-・・menuの順番を変えるのに各リソースのpriorityを数値で一つずついじる必要がある
-・`parent`による階層関係の管理
-・・階層を作るには、initializerで親menuを作成し、さらに各リソースから親menuの指定が必要
-
-設定が分散しており、煩雑です
-設定が分散しており、変更が面倒です
- -->
 Specifically, the two points are as follows:
 - Order control by `priority`.
   - To change the order of the menu, we need to change the priority of each resource one by one.
@@ -64,10 +19,6 @@ Specifically, the two points are as follows:
 The configuration is scattered and burdensome to change.
 
 This gem solves these problems.
-
-<!-- 
-### Features
- -->
 
 ## Installation
 
