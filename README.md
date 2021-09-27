@@ -66,17 +66,17 @@ end
 
 You can use `menu_tree` instead of `menu` in ActiveAdmin Resource.
 ```ruby
-# app/admin/dashboard.rb
-ActiveAdmin.register_page "Dashboard" do
-  # The options available for `menu` can be passed as is.
-  menu_tree label: proc { I18n.t("active_admin.dashboard") }
-  # ...
-end
-
 # app/admin/admin_users.rb
 ActiveAdmin.register AdminUser do
   # No need to specify `priority` or `parent`.
   menu_tree
+  # ...
+end
+
+# app/admin/dashboard.rb
+ActiveAdmin.register_page "Dashboard" do
+  # The options available for `menu` can be passed as is.
+  menu_tree label: proc { I18n.t("active_admin.dashboard") }
   # ...
 end
 
