@@ -26,6 +26,8 @@ Style/TrailingCommaInHashLiteral:
 
 Layout/LineLength:
   Max: 120
+  Exclude:
+    - '*.gemspec'
 
 Layout/SpaceBeforeBlockBraces:
   Enabled: false
