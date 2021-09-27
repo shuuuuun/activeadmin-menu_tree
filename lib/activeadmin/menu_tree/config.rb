@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module ActiveAdmin::MenuTree
+  # ActiveAdmin::MenuTree::Config class
   class Config
     attr_reader :menu_tree, :menu_options
 

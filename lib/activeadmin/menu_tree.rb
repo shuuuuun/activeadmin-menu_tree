@@ -8,6 +8,7 @@ require_relative "menu_tree/config"
 require_relative "menu_tree/dsl"
 
 module ActiveAdmin
+  # ActiveAdmin::MenuTree class
   module MenuTree
     class Error < StandardError; end
 
