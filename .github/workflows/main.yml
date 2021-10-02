@@ -19,12 +19,17 @@ jobs:
       run: bundle exec rake rubocop
   rspec:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ruby:
+          - 2.7
+          - 3.0
     steps:
     - uses: actions/checkout@v2
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 3.0.0
+        ruby-version: ${{ matrix.ruby }}
     - name: Install bundler
       run: gem install bundler
     - name: Setup
