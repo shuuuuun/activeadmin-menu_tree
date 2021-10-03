@@ -1,6 +1,6 @@
 # ActiveAdmin::MenuTree
 
-<!-- TODO: badge -->
+[![Gem Version](https://badge.fury.io/rb/activeadmin-menu_tree.svg)](https://badge.fury.io/rb/activeadmin-menu_tree)
 
 Allows [ActiveAdmin](https://github.com/activeadmin/activeadmin) menus to be managed in tree format.
 
