@@ -1,6 +1,7 @@
 # ActiveAdmin::MenuTree
 
 [![Gem Version](https://badge.fury.io/rb/activeadmin-menu_tree.svg)](https://badge.fury.io/rb/activeadmin-menu_tree)
+[![Ruby](https://github.com/shuuuuun/activeadmin-menu_tree/actions/workflows/main.yml/badge.svg)](https://github.com/shuuuuun/activeadmin-menu_tree/actions/workflows/main.yml)
 
 Allows [ActiveAdmin](https://github.com/activeadmin/activeadmin) menus to be managed in tree format.
 
