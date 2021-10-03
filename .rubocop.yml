@@ -1,3 +1,8 @@
+require:
+  - rubocop-rake
+  - rubocop-rspec
+  - rubocop-rubycw
+
 AllCops:
   TargetRubyVersion: 2.7
   NewCops: enable
@@ -38,3 +43,13 @@ Metrics/BlockLength:
 
 Metrics/MethodLength:
   Max: 15
+
+RSpec:
+  # DisabledByDefault
+  Enabled: false
+
+RSpec/ContextWording:
+  Enabled: true
+
+RSpec/VerifiedDoubles:
+  Enabled: true

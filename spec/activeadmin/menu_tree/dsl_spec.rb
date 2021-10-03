@@ -6,12 +6,12 @@ RSpec.describe ActiveAdmin::MenuTree::DSL do
   ActiveAdmin::DSL.prepend ActiveAdmin::MenuTree::DSL
 
   let(:dsl) { ActiveAdmin::DSL.new(config) }
-  let(:config) { double("ActiveAdmin::Application") }
+  let(:config) { instance_double("ActiveAdmin::Application") }
 
   describe "menu_tree" do
     subject { dsl.menu_tree }
 
-    let(:resource_name) { double("ActiveAdmin::Resource::Name") }
+    let(:resource_name) { instance_double("ActiveAdmin::Resource::Name") }
 
     before do
       allow(config).to receive(:resource_name).and_return(resource_name)
