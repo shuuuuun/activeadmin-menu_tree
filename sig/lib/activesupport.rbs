@@ -1,0 +1,4 @@
+# Tentative deal, it doesn't seem to be loaded from gem_rbs_collection for some reason.
+class Object
+  def present?: () -> bool
+end
