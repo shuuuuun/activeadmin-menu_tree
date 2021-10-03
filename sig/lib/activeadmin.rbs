@@ -1,3 +1,8 @@
 module ActiveAdmin
-  def self.before_load: () { (untyped) -> void } -> void
+  def self.before_load: () { (ActiveAdmin::Application) -> void } -> void
+
+  class Application
+    def comments_menu=: (Hash[Symbol, untyped] | nil) -> void
+    def namespace: (Symbol) { (untyped) -> void } -> void
+  end
 end

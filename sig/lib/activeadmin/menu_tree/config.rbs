@@ -1,18 +1,22 @@
 module ActiveAdmin::MenuTree
   class Config
-    attr_reader menu_tree: Array[untyped]
-    attr_reader menu_options: Array[untyped]
+    type menu_tree_item = Hash[Symbol, untyped]
+    type menu_option = Hash[Symbol, untyped]
+
+    attr_reader menu_tree: Array[menu_tree_item]
+    attr_reader menu_options: Array[menu_option]
 
     def initialize: () -> void
 
-    def menu_tree=: (untyped new_value) -> untyped
+    # def menu_tree=: (Array[Hash[untyped, untyped]] new_value) -> void
+    def menu_tree=: (Array[untyped] new_value) -> void
 
-    def find_menu_option: (name: String) -> untyped
+    def find_menu_option: (name: String) -> (menu_option | nil)
 
     private
 
-    def flatten_menu_tree: () -> untyped
+    def flatten_menu_tree: () -> Array[menu_option]
 
-    def format_options: (untyped item, index: untyped index, ?parent: untyped? parent) -> untyped
+    def format_options: (Hash[Symbol, untyped] item, index: Integer index, ?parent: String? parent) -> menu_option
   end
 end

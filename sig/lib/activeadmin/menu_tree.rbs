@@ -3,12 +3,12 @@ module ActiveAdmin
     class Error < StandardError
     end
 
-    def self.setup: () { (untyped) -> untyped } -> untyped
+    def self.setup: () { (Config) -> void } -> void
 
     def self.config: () -> Config
 
     private
 
-    def self.setup_menu_options: (untyped aa_config) -> untyped
+    def self.setup_menu_options: (ActiveAdmin::Application) -> void
   end
 end
