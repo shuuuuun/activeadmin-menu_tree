@@ -9,7 +9,7 @@ RSpec.describe ActiveAdmin::MenuTree do
     subject { ActiveAdmin::MenuTree.setup(&block) }
 
     let(:block) { lambda { |config| config.menu_tree = [] } }
-    let(:activeadmin_config) { double("ActiveAdmin::Application") }
+    let(:activeadmin_config) { instance_double("ActiveAdmin::Application") }
 
     before do
       allow(activeadmin_config).to receive(:comments_menu=)
@@ -36,7 +36,7 @@ RSpec.describe ActiveAdmin::MenuTree do
       it { expect(activeadmin_config).to have_received(:comments_menu=).once }
     end
 
-    context "no block given" do
+    context "when no block given" do
       let(:block) { nil }
 
       it { expect{ subject }.to raise_error ActiveAdmin::MenuTree::Error }
