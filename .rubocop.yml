@@ -42,3 +42,13 @@ Metrics/BlockLength:
 
 Metrics/MethodLength:
   Max: 15
+
+RSpec:
+  # DisabledByDefault
+  Enabled: false
+
+RSpec/ContextWording:
+  Enabled: true
+
+RSpec/VerifiedDoubles:
+  Enabled: true
