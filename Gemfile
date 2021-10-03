@@ -11,4 +11,5 @@ gem "rspec", "~> 3.0"
 gem "rubocop", "~> 1.0", require: false
 gem "rubocop-rake", require: false
 gem "rubocop-rspec", require: false
+gem "rubocop-rubycw", require: false
 gem "steep"
