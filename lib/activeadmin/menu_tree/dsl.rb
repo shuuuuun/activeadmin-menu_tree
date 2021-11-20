@@ -5,7 +5,6 @@ module ActiveAdmin::MenuTree
   module DSL
     def menu_tree(**args)
       options = menu_tree_config.find_menu_option(name: config.resource_name.name) || {}
-      options[:label] ||= config.resource_name.translate
       options = options.except(:name)
       options = options.merge(args)
       menu(**options)
