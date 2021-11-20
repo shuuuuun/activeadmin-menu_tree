@@ -38,6 +38,7 @@ module ActiveAdmin::MenuTree
     end
 
     def format_options(item, index:, parent: nil)
+      # TODO: validate option
       options = item.except(:children)
       options[:priority] = index * 10
       options[:id] ||= item[:name]
