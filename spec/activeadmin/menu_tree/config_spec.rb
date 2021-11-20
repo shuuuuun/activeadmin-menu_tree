@@ -65,7 +65,7 @@ RSpec.describe ActiveAdmin::MenuTree::Config do
     end
 
     it { is_expected.not_to be_nil }
-    it { expect(subject).to all(include(:label, :priority)) }
+    it { expect(subject).to all(include(:id, :priority)) }
     # it { expect(subject).not_to all(include(:children)) }
     it { expect(subject).to all(not_include(:children)) }
 
@@ -74,12 +74,6 @@ RSpec.describe ActiveAdmin::MenuTree::Config do
       it { expect(subject.find{ |item| item[:name] == "User" }[:parent]).to eq("User") }
       it { expect(subject.find{ |item| item[:name] == "Foo" }[:parent]).to eq("Other") }
       it { expect(subject.find{ |item| item[:name] == "Bar" }[:parent]).to eq("Other") }
-    end
-
-    describe "set name to label when no label" do
-      let(:labelless_items) { subject.select{ |item| item[:label].blank? && item[:name].present? } }
-
-      it { expect(labelless_items).to all(satisfy{ |item| item[:label] == item[:name].pluralize.titleize }) }
     end
   end
 
