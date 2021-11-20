@@ -46,12 +46,12 @@ Write the configuration in a yaml file.
 # config/activeadmin-menu_tree.yml or anywhere you like
 activeadmin:
   menu_tree:
-    - name: Dashboard
+    - id: Dashboard
     - label: Admin
       children:
-        - name: AdminUser
+        - id: AdminUser
           label: Admin Users
-        - name: Comment
+        - id: Comment
           label: Admin Comments
 ```
 
@@ -92,13 +92,13 @@ If you want to use dynamic specification using `proc` in menu_tree (instead of i
 ```ruby
 ActiveAdmin::MenuTree.setup do |config|
   config.menu_tree = [
-    { name: "Dashboard", label: proc { I18n.t("active_admin.dashboard") } },
+    { id: "Dashboard", label: proc { I18n.t("active_admin.dashboard") } },
     {
       label: "Foo",
       if: proc { "Something dynamic" },
       children: [
-        { name: "Bar" },
-        { name: "Baz" }
+        { id: "Bar" },
+        { id: "Baz" }
       ]
     }
   ]
@@ -125,26 +125,26 @@ Or you can use other configuration gems like [global gem](https://github.com/rai
 ```yaml
 activeadmin:
   menu_tree:
-    # Specify the resource name with `name`.
-    - name: Dashboard
-    - name: Product
+    # Specify the resource with `id`.
+    - id: Dashboard
+    - id: Product
     # Specify a menu label with `label`.
     - label: User Info
       # Specify child elements with `children`.
       children:
-        - name: User
-        - name: Profile
+        - id: User
+        - id: Profile
     - label: Admin
       children:
-        - name: AdminUser
+        - id: AdminUser
           label: Admin Users
         # Comment resource will be handled specially.
-        - name: Comment
+        - id: Comment
           label: Admin Comments
     - label: Others
       children:
-        - name: Foo
-        - name: Bar
+        - id: Foo
+        - id: Bar
     - label: Example Site
       # You can pass the other options available for `menu` DSL, like `url`, `html_options`.
       url: 'https://example.com'

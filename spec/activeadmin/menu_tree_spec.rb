@@ -31,7 +31,7 @@ RSpec.describe ActiveAdmin::MenuTree do
 
     context "with Comment" do
       before { subject }
-      let(:block) { lambda { |config| config.menu_tree = [{ name: "Comment" }] } }
+      let(:block) { lambda { |config| config.menu_tree = [{ id: "Comment" }] } }
 
       it { expect(activeadmin_config).to have_received(:comments_menu=).once }
     end

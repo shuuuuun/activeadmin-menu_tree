@@ -32,12 +32,11 @@ module ActiveAdmin
       private
 
       def setup_menu_options(aa_config)
-        comments_menu = config.find_menu_option(name: "Comment")
+        comments_menu = config.find_menu_option(id: "Comment")
         aa_config.comments_menu = comments_menu if comments_menu.present?
 
         menu_options = config.menu_options
-                             .reject{ |item| item[:name] == "Comment" }
-                             .map{ |item| item.except(:name) }
+                             .reject{ |item| item[:id] == "Comment" }
 
         aa_config.namespace :admin do |admin|
           admin.build_menu do |menu|

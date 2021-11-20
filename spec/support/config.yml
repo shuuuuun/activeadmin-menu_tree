@@ -1,26 +1,27 @@
 activeadmin:
   menu_tree:
-    - name: Dashboard
-    - name: Product
+    - id: Dashboard
+    - id: Product
     - label: User Info
       children:
-        - name: User
-        - name: Profile
+        - id: User
+        - id: Profile
     - label: Admin
       children:
-        - name: AdminUser
+        - id: AdminUser
           label: Admin Users
-        - name: Comment
+        - id: Comment
           label: Admin Comments
           url: /admin/comments
     - label: Others
       children:
-        - name: Foo
-        - name: Bar
+        - id: Foo
+        - id: Bar
         - label: Baz
           url: 'https://example.com/baz'
           html_options:
             target: blank
+        - id: ほげ
     - label: Lorem
       children:
         - label: ipsum
