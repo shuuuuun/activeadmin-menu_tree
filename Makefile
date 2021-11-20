@@ -1,7 +1,7 @@
 .PHONY: rake/* rbs/* typeprof/* steep/*
 
 rake/tasks:
-	rake --tasks
+	bundle exec rake --tasks
 
 rbs/prototype: rbs/prototype/lib
 
