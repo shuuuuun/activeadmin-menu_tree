@@ -40,7 +40,7 @@ module ActiveAdmin::MenuTree
     def format_options(item, index:, parent: nil)
       options = item.except(:children)
       options[:priority] = index * 10
-      options[:label] ||= item[:name]&.pluralize&.titleize || ""
+      options[:id] ||= item[:name]
       options[:parent] = parent if parent.present?
       options
     end
