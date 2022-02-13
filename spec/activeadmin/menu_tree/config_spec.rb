@@ -3,18 +3,18 @@
 RSpec.describe ActiveAdmin::MenuTree::Config do
   let(:sample_menu_tree) do
     [
-      { name: "Dashboard" },
+      { id: "Dashboard" },
       {
         label: "User",
         children: [
-          { name: "User", label: "It's User" }
+          { id: "User", label: "It's User" }
         ]
       },
       {
         label: "Other",
         children: [
-          { name: "Foo", label: "It's Foo" },
-          { name: "Bar", label: "It's Bar" }
+          { id: "Foo", label: "It's Foo" },
+          { id: "Bar", label: "It's Bar" }
         ]
       },
       {
@@ -84,14 +84,14 @@ RSpec.describe ActiveAdmin::MenuTree::Config do
     end
 
     it { is_expected.not_to be_nil }
-    it { expect(subject).to all(include(:id, :priority)) }
+    it { expect(subject).to all(include(:priority)) }
     it { expect(subject).to all(not_include(:children)) }
 
     describe "include parent in child items" do
-      it { expect(subject.find{ |item| item[:name] == "Dashboard" }).not_to include(:parent) }
-      it { expect(subject.find{ |item| item[:name] == "User" }[:parent]).to eq("User") }
-      it { expect(subject.find{ |item| item[:name] == "Foo" }[:parent]).to eq("Other") }
-      it { expect(subject.find{ |item| item[:name] == "Bar" }[:parent]).to eq("Other") }
+      it { expect(subject.find{ |item| item[:id] == "Dashboard" }).not_to include(:parent) }
+      it { expect(subject.find{ |item| item[:id] == "User" }[:parent]).to eq("User") }
+      it { expect(subject.find{ |item| item[:id] == "Foo" }[:parent]).to eq("Other") }
+      it { expect(subject.find{ |item| item[:id] == "Bar" }[:parent]).to eq("Other") }
       it { expect(subject.find{ |item| item[:label] == "Lorem" }[:parent]).to be_nil }
       it { expect(subject.find{ |item| item[:label] == "ipsum" }[:parent]).to eq("Lorem") }
       it { expect(subject.find{ |item| item[:label] == "dolor" }[:parent]).to eq(%w[Lorem ipsum]) }
@@ -101,10 +101,10 @@ RSpec.describe ActiveAdmin::MenuTree::Config do
   end
 
   describe "find_menu_option" do
-    subject { config.find_menu_option(name: name) }
+    subject { config.find_menu_option(id: id) }
 
     let(:config) { described_class.new }
-    let(:name) { "" }
+    let(:id) { "" }
 
     before do
       config.menu_tree = sample_menu_tree
@@ -113,21 +113,21 @@ RSpec.describe ActiveAdmin::MenuTree::Config do
     it { is_expected.to eq nil }
 
     context do
-      let(:name) { "User" }
+      let(:id) { "User" }
 
-      it { is_expected.to include(name: "User", label: "It's User") }
+      it { is_expected.to include(id: "User", label: "It's User") }
     end
 
     context do
-      let(:name) { "Foo" }
+      let(:id) { "Foo" }
 
-      it { is_expected.to include(name: "Foo", label: "It's Foo") }
+      it { is_expected.to include(id: "Foo", label: "It's Foo") }
     end
 
     context do
-      let(:name) { "Bar" }
+      let(:id) { "Bar" }
 
-      it { is_expected.to include(name: "Bar", label: "It's Bar") }
+      it { is_expected.to include(id: "Bar", label: "It's Bar") }
     end
   end
 end

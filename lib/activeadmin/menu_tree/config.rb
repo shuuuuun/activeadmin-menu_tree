@@ -17,8 +17,8 @@ module ActiveAdmin::MenuTree
       @menu_options = flatten_options(@menu_tree)
     end
 
-    def find_menu_option(name:)
-      menu_options.find { |item| item[:name] == name }
+    def find_menu_option(id:)
+      menu_options.find { |item| item[:id] == id }
     end
 
     private
@@ -38,7 +38,6 @@ module ActiveAdmin::MenuTree
       # TODO: validate option
       options = item.except(:children)
       options[:priority] = index * 10
-      options[:id] ||= item[:name]
       options[:parent] = parent if parent.present?
       options
     end

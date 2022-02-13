@@ -25,7 +25,7 @@ RSpec.describe ActiveAdmin::MenuTree::DSL do
 
     it { expect(dsl).to have_received(:menu).with(no_args).once }
     it { expect(ActiveAdmin::MenuTree).to have_received(:config).at_least(:once) }
-    it { expect(ActiveAdmin::MenuTree.config).to have_received(:find_menu_option).with(name: "name").once }
+    it { expect(ActiveAdmin::MenuTree.config).to have_received(:find_menu_option).with(id: "name").once }
 
     context "with args" do
       subject { dsl.menu_tree(**kwargs) }
@@ -33,7 +33,7 @@ RSpec.describe ActiveAdmin::MenuTree::DSL do
 
       it { expect(dsl).to have_received(:menu).with(kwargs).once }
       it { expect(ActiveAdmin::MenuTree).to have_received(:config).at_least(:once) }
-      it { expect(ActiveAdmin::MenuTree.config).to have_received(:find_menu_option).with(name: "name").once }
+      it { expect(ActiveAdmin::MenuTree.config).to have_received(:find_menu_option).with(id: "name").once }
     end
   end
 end
