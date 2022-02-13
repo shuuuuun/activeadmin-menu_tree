@@ -86,13 +86,16 @@ end
 
 ### Other ways to load configuration
 
-It is also possible to simply use hash instead of yaml.
+It is also possible to simply use hash instead of yaml.  
+If you want to use dynamic specification using `proc` in menu_tree (instead of in ActiveAdmin Resource), you may want to use this one.
+
 ```ruby
 ActiveAdmin::MenuTree.setup do |config|
   config.menu_tree = [
-    { name: "Dashboard" },
+    { name: "Dashboard", label: proc { I18n.t("active_admin.dashboard") } },
     {
       label: "Foo",
+      if: proc { "Something dynamic" },
       children: [
         { name: "Bar" },
         { name: "Baz" }
