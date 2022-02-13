@@ -18,27 +18,27 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.0.0
+          ruby-version: 3.1
       - name: Install bundler
         run: gem install bundler
       - name: Setup
         run: bin/setup
       - name: Rubocop
         run: bundle exec rake rubocop
-  steep:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 3.0.0
-      - name: Install bundler
-        run: gem install bundler
-      - name: Setup
-        run: bin/setup
-      - name: Steep
-        run: bundle exec steep check
+  # steep:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - name: Set up Ruby
+  #       uses: ruby/setup-ruby@v1
+  #       with:
+  #         ruby-version: 3.1
+  #     - name: Install bundler
+  #       run: gem install bundler
+  #     - name: Setup
+  #       run: bin/setup
+  #     - name: Steep
+  #       run: bundle exec steep check
   rspec:
     runs-on: ubuntu-latest
     strategy:
@@ -46,6 +46,7 @@ jobs:
         ruby:
           - 2.7
           - 3.0
+          - 3.1
     steps:
       - uses: actions/checkout@v2
       - name: Set up Ruby
