@@ -21,6 +21,18 @@ activeadmin:
           url: 'https://example.com/baz'
           html_options:
             target: blank
+    - label: Lorem
+      children:
+        - label: ipsum
+          children:
+            - label: dolor
+              children:
+                - label: sit
+                  children:
+                    - label: amet
+                      url: 'https://wikipedia.org/wiki/Lorem_ipsum'
+                      html_options:
+                        target: blank
     - label: Example Site
       url: 'https://example.com'
       html_options:
