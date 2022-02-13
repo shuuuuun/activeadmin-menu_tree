@@ -118,6 +118,7 @@ activeadmin:
 Or you can use other configuration gems like [global gem](https://github.com/railsware/global) by converting them to hash as well.
 
 ### Full configuration example
+
 ```yaml
 activeadmin:
   menu_tree:
@@ -146,6 +147,19 @@ activeadmin:
       url: 'https://example.com'
       html_options:
         target: blank
+    # Nesting of children is also available.
+    - label: Lorem
+      children:
+        - label: ipsum
+          children:
+            - label: dolor
+              children:
+                - label: sit
+                  children:
+                    - label: amet
+                      url: 'https://wikipedia.org/wiki/Lorem_ipsum'
+                      html_options:
+                        target: blank
 ```
 
 ## Development
