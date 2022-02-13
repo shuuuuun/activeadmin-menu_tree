@@ -14,7 +14,7 @@ module ActiveAdmin::MenuTree
       raise ActiveAdmin::MenuTree::Error, "Invalid config" unless new_value.is_a? Array
 
       @menu_tree = new_value.map(&:deep_symbolize_keys)
-      @menu_options = flatten_menu_tree
+      @menu_options = flatten_options(@menu_tree)
     end
 
     def find_menu_option(name:)
@@ -23,16 +23,16 @@ module ActiveAdmin::MenuTree
 
     private
 
-    def flatten_menu_tree
-      menu_tree.map.with_index(1) do |item, index|
-        options = format_options(item, index: index)
+    def flatten_options(items)
+      items.map.with_index(1) do |item, index|
+        options = format_options(item, index: index, parent: item[:parent])
         next options unless item[:children].is_a? Array
 
-        children =
-          item[:children].map.with_index(1) do |child, child_index|
-            format_options(child, index: child_index, parent: item[:label])
-          end
-
+        parent = item[:parent] ? [item[:parent], item[:label]].flatten.compact : item[:label]
+        item[:children].each do |child|
+          child[:parent] = parent
+        end
+        children = flatten_options(item[:children])
         [options] + children
       end.flatten.compact
     end
