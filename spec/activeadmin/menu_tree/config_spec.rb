@@ -19,7 +19,29 @@ RSpec.describe ActiveAdmin::MenuTree::Config do
         name: "Bar",
         label: "It's Bar"
       }]
-    }]
+    },
+    {
+      label: "Lorem",
+      children: [
+          {
+            label: "ipsum",
+            children: [
+              {
+                label: "dolor",
+                children: [
+                  {
+                    label: "sit",
+                    children: [
+                      { label: "amet", url: "https://example.com/", html_options: { target: "blank" } }
+                    ]
+                  }
+                ],
+              }
+            ],
+          }
+        ]
+      },
+    ]
   end
 
   it { should respond_to :menu_tree }
@@ -37,7 +59,7 @@ RSpec.describe ActiveAdmin::MenuTree::Config do
 
     context do
       let(:new_value) { sample_menu_tree }
-      let(:flattened_size) { sample_menu_tree.map{ |item| [item] + (item[:children] || []) }.flatten.compact.size }
+      let(:flattened_size) { 11 }
 
       before do
         subject
@@ -66,7 +88,6 @@ RSpec.describe ActiveAdmin::MenuTree::Config do
 
     it { is_expected.not_to be_nil }
     it { expect(subject).to all(include(:id, :priority)) }
-    # it { expect(subject).not_to all(include(:children)) }
     it { expect(subject).to all(not_include(:children)) }
 
     describe "include parent in child items" do
@@ -74,6 +95,11 @@ RSpec.describe ActiveAdmin::MenuTree::Config do
       it { expect(subject.find{ |item| item[:name] == "User" }[:parent]).to eq("User") }
       it { expect(subject.find{ |item| item[:name] == "Foo" }[:parent]).to eq("Other") }
       it { expect(subject.find{ |item| item[:name] == "Bar" }[:parent]).to eq("Other") }
+      it { expect(subject.find{ |item| item[:label] == "Lorem" }[:parent]).to be_nil }
+      it { expect(subject.find{ |item| item[:label] == "ipsum" }[:parent]).to eq("Lorem") }
+      it { expect(subject.find{ |item| item[:label] == "dolor" }[:parent]).to eq(%w[Lorem ipsum]) }
+      it { expect(subject.find{ |item| item[:label] == "sit" }[:parent]).to eq(%w[Lorem ipsum dolor]) }
+      it { expect(subject.find{ |item| item[:label] == "amet" }[:parent]).to eq(%w[Lorem ipsum dolor sit]) }
     end
   end
 
