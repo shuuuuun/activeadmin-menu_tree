@@ -165,6 +165,9 @@ activeadmin:
                         target: blank
 ```
 
+<img width="1573" alt="screenshot" src="https://user-images.githubusercontent.com/7542105/153759374-fd516cb8-8022-4e44-aad9-c97f77afc4e7.png">
+
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
