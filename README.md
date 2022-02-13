@@ -89,16 +89,16 @@ end
 It is also possible to simply use hash instead of yaml.
 ```ruby
 ActiveAdmin::MenuTree.setup do |config|
-  config.menu_tree = [{
-    name: "Dashboard"
-  }, {
-    label: "Foo",
-    children: [{
-      name: "Bar"
-    }, {
-      name: "Baz"
-    }]
-  }]
+  config.menu_tree = [
+    { name: "Dashboard" },
+    {
+      label: "Foo",
+      children: [
+        { name: "Bar" },
+        { name: "Baz" }
+      ]
+    }
+  ]
 end
 ```
 
