@@ -18,7 +18,7 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.0.0
+          ruby-version: 3.1
       - name: Install bundler
         run: gem install bundler
       - name: Setup
@@ -32,7 +32,7 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.0.0
+          ruby-version: 3.1
       - name: Install bundler
         run: gem install bundler
       - name: Setup
@@ -46,6 +46,7 @@ jobs:
         ruby:
           - 2.7
           - 3.0
+          - 3.1
     steps:
       - uses: actions/checkout@v2
       - name: Set up Ruby
