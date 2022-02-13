@@ -2,27 +2,24 @@
 
 RSpec.describe ActiveAdmin::MenuTree::Config do
   let(:sample_menu_tree) do
-    [{
-      name: "Dashboard"
-    }, {
-      label: "User",
-      children: [{
-        name: "User",
-        label: "It's User",
-      }]
-    }, {
-      label: "Other",
-      children: [{
-        name: "Foo",
-        label: "It's Foo"
-      }, {
-        name: "Bar",
-        label: "It's Bar"
-      }]
-    },
-    {
-      label: "Lorem",
-      children: [
+    [
+      { name: "Dashboard" },
+      {
+        label: "User",
+        children: [
+          { name: "User", label: "It's User" }
+        ]
+      },
+      {
+        label: "Other",
+        children: [
+          { name: "Foo", label: "It's Foo" },
+          { name: "Bar", label: "It's Bar" }
+        ]
+      },
+      {
+        label: "Lorem",
+        children: [
           {
             label: "ipsum",
             children: [
@@ -40,7 +37,7 @@ RSpec.describe ActiveAdmin::MenuTree::Config do
             ],
           }
         ]
-      },
+      }
     ]
   end
 
