@@ -1,7 +1,7 @@
 PATH
   remote: ../..
   specs:
-    activeadmin-menu_tree (0.1.2)
+    activeadmin-menu_tree (0.2.1)
       activeadmin (~> 2.8)
       activesupport
 
