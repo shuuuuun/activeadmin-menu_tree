@@ -4,6 +4,7 @@ require "active_support"
 require "active_support/core_ext"
 
 require_relative "menu_tree/version"
+require_relative "menu_tree/logging"
 require_relative "menu_tree/config"
 require_relative "menu_tree/dsl"
 
@@ -13,6 +14,8 @@ module ActiveAdmin
     class Error < StandardError; end
 
     class << self
+      include ActiveAdmin::MenuTree::Logging
+
       def setup
         raise ActiveAdmin::MenuTree::Error, "No block given, require a block" unless block_given?
 
@@ -38,6 +41,7 @@ module ActiveAdmin
         menu_options = config.menu_options
                              .reject{ |item| item[:id] == "Comment" }
 
+        ActiveAdmin::MenuTree.log_debug("menu_options: #{menu_options.inspect}")
         aa_config.namespace :admin do |admin|
           admin.build_menu do |menu|
             menu_options.each do |options|
