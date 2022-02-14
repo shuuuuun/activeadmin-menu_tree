@@ -41,6 +41,7 @@ module ActiveAdmin
         menu_options = config.menu_options
                              .reject{ |item| item[:id] == "Comment" }
 
+        ActiveAdmin::MenuTree.log_debug("menu_options: #{menu_options.inspect}")
         aa_config.namespace :admin do |admin|
           admin.build_menu do |menu|
             menu_options.each do |options|
