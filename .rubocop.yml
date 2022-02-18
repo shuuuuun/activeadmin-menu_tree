@@ -27,6 +27,9 @@ Style/StringLiteralsInInterpolation:
   Enabled: true
   EnforcedStyle: double_quotes
 
+Style/TrailingCommaInArrayLiteral:
+  Enabled: false
+
 Style/TrailingCommaInHashLiteral:
   Enabled: false
 
