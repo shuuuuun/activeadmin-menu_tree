@@ -72,6 +72,30 @@ RSpec.describe ActiveAdmin::MenuTree::Config do
 
       it { expect{ subject }.to raise_error ActiveAdmin::MenuTree::Error }
     end
+
+    context "with name key" do
+      let(:sample_menu_tree) do
+        [
+          { name: "Dashboard" },
+          {
+            label: "User",
+            children: [
+              { name: "User", label: "It's User" }
+            ]
+          },
+        ]
+      end
+      let(:new_value) { sample_menu_tree }
+      let(:flattened_size) { 3 }
+
+      before do
+        subject
+      end
+
+      it { expect(config.menu_tree).to eq new_value }
+      it { expect(config.menu_options).not_to be_empty }
+      it { expect(config.menu_options.size).to eq flattened_size }
+    end
   end
 
   describe "menu_options" do

@@ -36,11 +36,11 @@ module ActiveAdmin::MenuTree
 
     def format_options(item, index:, parent: nil)
       # TODO: validate option
+      options = item.except(:children)
       if item.key?(:name)
         ActiveAdmin::MenuTree.warn_deprecated("Use `id` key, instead of `name`.")
         options[:id] ||= item[:name]
       end
-      options = item.except(:children)
       options[:priority] = index * 10
       options[:parent] = parent if parent.present?
       options
