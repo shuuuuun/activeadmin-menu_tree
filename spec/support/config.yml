@@ -6,6 +6,44 @@ activeadmin:
       children:
         - id: User
         - id: Profile
+        - label: UserReport
+          url: '?'
+        - label: UserScore
+          url: '?'
+    - label: Blog
+      children:
+        - label: Blogs
+          url: '?'
+        - label: Posts
+          url: '?'
+        - label: News
+          url: '?'
+    - label: Organization
+      children:
+        - label: Organizations
+          url: '?'
+        - label: Licenses
+          url: '?'
+    - label: Coupons
+      url: '?'
+    - label: Likes
+      url: '?'
+    - label: Projects
+      url: '?'
+    - label: Chat
+      children:
+        - label: ChatRooms
+          url: '?'
+        - label: ChatMessages
+          url: '?'
+    - label: Notifications
+      url: '?'
+    - label: Tags
+      children:
+        - label: Tags
+          url: '?'
+        - label: Taggings
+          url: '?'
     - label: Admin
       children:
         - id: AdminUser
@@ -13,27 +51,150 @@ activeadmin:
         - id: Comment
           label: Admin Comments
           url: /admin/comments
+        - label: Admin User Roles
+          url: '?'
     - label: Others
       children:
-        - id: Foo
-        - id: Bar
+        - label: Foo
+          url: '?'
+        - label: Bar
+          url: '?'
         - label: Baz
-          url: 'https://example.com/baz'
-          html_options:
-            target: blank
-        - id: ほげ
+          url: '?'
+        - label: ほげ
+          url: '?'
     - label: Lorem
       children:
-        - label: ipsum
+      - label: ipsum
+        children:
+        - label: dolor
           children:
-            - label: dolor
+          - label: sit
+            children:
+            - label: amet,
               children:
-                - label: sit
+              - label: consectetur
+                children:
+                - label: adipiscing
                   children:
-                    - label: amet
-                      url: 'https://wikipedia.org/wiki/Lorem_ipsum'
-                      html_options:
-                        target: blank
+                  - label: elit,
+                    children:
+                    - label: sed
+                      children:
+                      - label: do
+                        children:
+                        - label: eiusmod
+                          children:
+                          - label: tempor
+                            children:
+                            - label: incididunt
+                              children:
+                              - label: ut
+                                children:
+                                - label: labore
+                                  children:
+                                  - label: et
+                                    children:
+                                    - label: dolore
+                                      children:
+                                      - label: magna
+                                        children:
+                                        - label: aliqua.
+                                          url: 'https://wikipedia.org/wiki/Lorem_ipsum'
+                                          html_options:
+                                            target: blank
+    - label: Example Site
+      url: 'https://example.com'
+      html_options:
+        target: blank
+  menu_tree_flat:
+    - id: Dashboard
+    - id: Product
+    - id: User
+    - id: Profile
+    - label: UserReport
+      url: '?'
+    - label: UserScore
+      url: '?'
+    - label: Blogs
+      url: '?'
+    - label: Posts
+      url: '?'
+    - label: Organizations
+      url: '?'
+    - label: Licenses
+      url: '?'
+    - label: News
+      url: '?'
+    - label: Tags
+      url: '?'
+    - label: Taggings
+      url: '?'
+    - label: Likes
+      url: '?'
+    - label: Coupons
+      url: '?'
+    - label: Projects
+      url: '?'
+    - label: ChatRooms
+      url: '?'
+    - label: ChatMessages
+      url: '?'
+    - label: Notifications
+      url: '?'
+    - id: AdminUser
+      label: Admin Users
+    - id: Comment
+      label: Admin Comments
+      url: /admin/comments
+    - label: Admin User Roles
+      url: '?'
+    - label: Foo
+      url: '?'
+    - label: Bar
+      url: '?'
+    - label: Baz
+      url: '?'
+    - label: Lorem
+      url: '?'
+    - label: ipsum
+      url: '?'
+    - label: dolor
+      url: '?'
+    - label: sit
+      url: '?'
+    - label: amet,
+      url: '?'
+    - label: consectetur
+      url: '?'
+    - label: adipiscing
+      url: '?'
+    - label: elit,
+      url: '?'
+    - label: sed
+      url: '?'
+    - label: do
+      url: '?'
+    - label: eiusmod
+      url: '?'
+    - label: tempor
+      url: '?'
+    - label: incididunt
+      url: '?'
+    - label: ut
+      url: '?'
+    - label: labore
+      url: '?'
+    - label: et
+      url: '?'
+    - label: dolore
+      url: '?'
+    - label: magna
+      url: '?'
+    - label: aliqua.
+      url: 'https://wikipedia.org/wiki/Lorem_ipsum'
+      html_options:
+        target: blank
     - label: Example Site
       url: 'https://example.com'
       html_options:
