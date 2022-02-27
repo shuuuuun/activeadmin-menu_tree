@@ -15,8 +15,22 @@ rbs/prototype/lib:
 # rbs/prototype/runtime:
 # 	rbs prototype runtime -R spec/spec_helper.rb
 
+rbs/validate:
+	rbs validate
+
+rbs/collection/update:
+	rbs collection update
+
+# typeprof/lib:
+# 	# typeprof lib/**/*.rb
+# 	typeprof lib/activeadmin/menu_tree.rb
+
 typeprof/lib:
-	typeprof lib/**/*.rb
+	for file in $$(find lib -name "*.rb" -type f | sort); do \
+		echo $${file}; \
+		mkdir -p sig/$$(dirname $${file}); \
+		typeprof sig/$${file}s $${file} -o sig/$$(dirname $${file})/$$(basename -s .rb $${file}).gen.rbs; \
+	done
 
 steep/check:
 	steep check
