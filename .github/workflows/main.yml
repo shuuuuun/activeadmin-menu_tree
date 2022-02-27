@@ -25,20 +25,20 @@ jobs:
         run: bin/setup
       - name: Rubocop
         run: bundle exec rubocop --fail-level W
-  # steep:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - name: Set up Ruby
-  #       uses: ruby/setup-ruby@v1
-  #       with:
-  #         ruby-version: "3.1"
-  #     - name: Install bundler
-  #       run: gem install bundler
-  #     - name: Setup
-  #       run: bin/setup
-  #     - name: Steep
-  #       run: bundle exec steep check
+  steep:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.1"
+      - name: Install bundler
+        run: gem install bundler
+      - name: Setup
+        run: bin/setup
+      - name: Steep
+        run: bundle exec steep check
   rspec:
     runs-on: ubuntu-latest
     strategy:
