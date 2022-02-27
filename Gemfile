@@ -6,10 +6,10 @@ source "https://rubygems.org"
 gemspec
 
 gem "rake", "~> 13.0"
-gem "rbs"
+gem "rbs", "~> 2.0"
 gem "rspec", "~> 3.0"
 gem "rubocop", "~> 1.0", require: false
 gem "rubocop-rake", require: false
 gem "rubocop-rspec", require: false
 gem "rubocop-rubycw", require: false
-gem "steep", ">= 0.47.0"
+gem "steep", ">= 0.47.0", github: "soutaro/steep" # until release this PR: https://github.com/soutaro/steep/pull/495
