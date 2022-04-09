@@ -12,4 +12,4 @@ gem "rubocop", "~> 1.0", require: false
 gem "rubocop-rake", require: false
 gem "rubocop-rspec", require: false
 gem "rubocop-rubycw", require: false
-gem "steep", "~> 0.49.1"
+gem "steep", "~> 0.52.0"
