@@ -1,0 +1,10 @@
+module ActiveAdmin
+  module MenuTree
+    # ActiveAdmin::MenuTree::Logging module
+    module Logging
+      def debug?: -> String?
+      def log_debug: (String message) -> void
+      def warn_deprecated: (String message) -> void
+    end
+  end
+end

@@ -1,4 +1,5 @@
 module ActiveAdmin::MenuTree
+  # ActiveAdmin::MenuTree::Config class
   class Config
     type menu_tree_item = Hash[Symbol, untyped]
     type menu_option = Hash[Symbol, untyped]
@@ -11,11 +12,11 @@ module ActiveAdmin::MenuTree
     # def menu_tree=: (Array[Hash[untyped, untyped]] new_value) -> void
     def menu_tree=: (Array[untyped] new_value) -> void
 
-    def find_menu_option: (name: String) -> (menu_option | nil)
+    def find_menu_option: (id: String) -> (menu_option | nil)
 
     private
 
-    def flatten_menu_tree: () -> Array[menu_option]
+    def flatten_options: (untyped items, ?parent: untyped? parent) -> Array[menu_option]
 
     def format_options: (Hash[Symbol, untyped] item, index: Integer index, ?parent: String? parent) -> menu_option
   end
