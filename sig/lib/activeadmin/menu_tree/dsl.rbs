@@ -1,7 +1,6 @@
 module ActiveAdmin::MenuTree
+  # ActiveAdmin::MenuTree::DSL class
   module DSL
-    include ActiveAdmin::DSL
-
     def menu_tree: (**untyped args) -> void
 
     private

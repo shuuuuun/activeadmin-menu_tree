@@ -1,7 +1,10 @@
 module ActiveAdmin
+  # ActiveAdmin::MenuTree class
   module MenuTree
     class Error < StandardError
     end
+
+    include ActiveAdmin::MenuTree::Logging
 
     def self.setup: () { (Config) -> void } -> void
 
