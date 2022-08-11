@@ -5,7 +5,7 @@ module ActiveAdmin
     # ActiveAdmin::MenuTree::Logging module
     module Logging
       def debug?
-        ENV["MENU_TREE_DEBUG"]
+        ENV.fetch("MENU_TREE_DEBUG", false)
       end
 
       def log_debug(message)
