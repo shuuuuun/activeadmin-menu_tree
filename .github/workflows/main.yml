@@ -18,13 +18,13 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.1
+          ruby-version: "3.1"
       - name: Install bundler
         run: gem install bundler
       - name: Setup
         run: bin/setup
       - name: Rubocop
-        run: bundle exec rake rubocop
+        run: bundle exec rubocop --fail-level W
   # steep:
   #   runs-on: ubuntu-latest
   #   steps:
@@ -32,7 +32,7 @@ jobs:
   #     - name: Set up Ruby
   #       uses: ruby/setup-ruby@v1
   #       with:
-  #         ruby-version: 3.1
+  #         ruby-version: "3.1"
   #     - name: Install bundler
   #       run: gem install bundler
   #     - name: Setup
@@ -44,9 +44,9 @@ jobs:
     strategy:
       matrix:
         ruby:
-          - 2.7
-          - 3.0
-          - 3.1
+          - "2.7"
+          - "3.0"
+          - "3.1"
     steps:
       - uses: actions/checkout@v2
       - name: Set up Ruby

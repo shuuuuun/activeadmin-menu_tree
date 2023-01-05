@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require "active_admin/dsl"
 require "activeadmin/menu_tree"
 
 support_files = Dir[File.expand_path("support/**/*.rb", __dir__)]

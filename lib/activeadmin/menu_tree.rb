@@ -44,8 +44,8 @@ module ActiveAdmin
         ActiveAdmin::MenuTree.log_debug("menu_options: #{menu_options.inspect}")
         aa_config.namespace :admin do |admin|
           admin.build_menu do |menu|
-            menu_options.each do |options|
-              menu.add(**options)
+            menu_options.each do |option|
+              menu.add(**option.dup)
             end
           end
         end
