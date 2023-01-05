@@ -13,6 +13,7 @@ module ActiveAdmin::MenuTree
     def menu_tree=(new_value)
       raise ActiveAdmin::MenuTree::Error, "Invalid config" unless new_value.is_a? Array
 
+      ActiveAdmin::MenuTree.log_debug("menu_tree=: #{new_value.inspect}")
       @menu_tree = new_value.map(&:deep_symbolize_keys)
       @menu_options = flatten_options(@menu_tree)
     end
