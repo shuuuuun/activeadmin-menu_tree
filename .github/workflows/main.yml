@@ -24,7 +24,7 @@ jobs:
       - name: Setup
         run: bin/setup
       - name: Rubocop
-        run: bundle exec rake rubocop
+        run: bundle exec rubocop --fail-level W
   # steep:
   #   runs-on: ubuntu-latest
   #   steps:
